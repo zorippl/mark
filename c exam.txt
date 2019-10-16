@@ -1,0 +1,275 @@
+#include<stdio.h>
+int sum=0;
+int fun(int digital)
+{
+	sum=sum+digital;
+	
+}
+
+int main(void)
+{
+	int d,n,tmp,i;
+	scanf("%d %d",&d,&n);
+	tmp=0;
+	for(i=0;i<n;i++)
+	{
+		fun(d+tmp);
+		tmp=d+tmp;
+		d=d*10;	
+	}
+	printf("sum=%d",sum);
+ } 
+
+================================================11111
+================================================2222
+#include<stdio.h>
+struct student{
+	int id;	
+	float score;
+}num[10],a[5],b[5];
+
+int main(void)
+{
+	int i,j,x,y,tmp1,tmp2,recorder=1;
+	for(i=0;i<10;i++)
+	{
+		scanf("%d %f",&num[i].id,&num[i].score);
+	}
+	for(i=0;i<9;i++)
+	{
+		for(j=i+1;j<10;j++)
+		{
+			if(num[j].score<num[i].score)
+			{
+				tmp1=num[j].score;
+				tmp2=num[j].id;
+				num[j].score=num[i].score;
+				num[j].id=num[i].id;
+				num[i].score=tmp1;
+				num[i].id=tmp2;
+				
+			}	
+		}
+	}
+	for(i=0,x=0,y=0;i<10;i++)
+	{
+		if(recorder%2!=0)
+		{
+			a[x].id=num[i].id;
+			a[x].score=num[i].score;
+			x++;
+			recorder++;
+		}
+		else
+		{
+			b[y].id=num[i].id;
+			b[y].score=num[i].score;
+			y++;
+			recorder++;
+		}
+	}
+	printf("Class1°à: ");	
+	for(x=0;x<5;x++)
+	{	
+		printf("%d %f ",a[x].id,a[x].score);
+	}
+	printf("Class2°à: ");	
+	for(y=0;y<5;y++)
+	{
+		printf("%d %f ",b[y].id,b[y].score);
+	}
+}
+========================================22222222
+========================================3333333
+#include<stdio.h>
+int main(void)
+{
+	float a[10],sum=0,average=0;
+	int i,A=0,B=0;
+	for(i=0;i<10;i++)
+	{
+		scanf("%f",&a[i]);
+	}
+	for(i=0;i<10;i++)
+	{
+		sum=sum+a[i];
+	}
+	average=sum/10;
+	for(i=0;i<10;i++)
+	{
+		if(a[i]>=average)
+		{
+			A++;
+		}
+		else
+		{
+			B++;
+		}
+	}
+	printf("Sum=%.1f, Ave=%.1f, A=%d, B=%d",sum,average,A,B);	
+}
+=============================================3333333333333
+=============================================4444444444
+#include<stdio.h>
+int fun(int num,int low)
+{
+	if(low%num==0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+int main(void)
+{
+	int n,a,p,s=0,i=1,j=0,ar[30];
+	scanf("%d",&n);//6758
+	a=n%100;//low58
+	p=(n-a)/100;//high67
+	while(i!=a)
+	{
+		if(fun(i,a))
+		{
+			s=s+i;
+			ar[j]=i;
+			i++;
+			j++;
+		}
+		else
+			i++;
+	}
+	printf("%d: 1",s);
+	for(i=1;i<j;i++)
+	{
+		printf("+%d",ar[i]);
+	}
+	printf("=%d, ",s);
+	if((s+p)==99)
+	{
+		printf("Accept");
+	}
+	else
+	{
+		printf("Refuse");
+	}
+	FILE *fp=fopen("C42.TXT","w");
+	fprintf(fp,"%d %d %d",a,p,s);
+}
+==========================================4444444
+==========================================5555555
+#include<stdio.h>
+int main(void)
+{
+	int a[50],n,i,pass=0,unpass=0;
+	float avpass=0,avunpass=0,sumpass=0,sumunpass=0;
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<n;i++)
+	{
+		if(a[i]>=60)
+		{
+			pass++;
+			sumpass=sumpass+a[i];
+		}
+		else
+		{
+			unpass++;
+			sumunpass=sumunpass+a[i];
+		}
+	}
+	avpass=sumpass/pass;
+	avunpass=sumunpass/unpass;
+	printf("Pass:%d,%.1f  Fail:%d,%.1f",pass,avpass,unpass,avunpass);
+}
+==========================================55555555
+==========================================66666666
+#include<stdio.h>
+int fun(int low,int degital)
+{
+	if(low%degital==0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+int main(void)
+{
+	int n,a,b,i=1,j=0,s=1,num[30];//4412
+	scanf("%d",&n);
+	a=n%100;//low12
+	b=(n-a)/100;//high44
+	while(i!=a)
+	{
+		if(fun(a,i)==1)
+		{
+			s=s*i;
+			num[j]=i;//num[0]=1 num[1]=2
+			i++;
+			j++;	
+		}
+		else
+		{
+			i++;
+		}
+	}
+	printf("%d: 1",a);
+	for(i=1;i<j;i++)
+	{
+		printf("*%d",num[i]);
+	}
+	printf("=%d, ",s);
+	if(s%100==b)
+	{
+		printf("Yes");
+	}
+	else
+	{
+		printf("No");
+	}
+	FILE *fp=fopen("D42.TXT","w");
+	fprintf(fp,"%d %d %d",a,b,s);
+}
+=====================================666666
+=====================================777777
+#include<stdio.h>
+int main(void)
+{
+	int a,b,i,j,s=1,n[50],je=0;
+	i=2;
+	n[0]=1;
+	scanf("%d %d",&a,&b);
+	printf("%d: ",a);
+	while(a>1)
+	{
+		if(a%i==0)
+		{
+			s=s*i;
+			for(j=0;j<=je;j++)
+			{
+				if(i!=n[j])
+				{
+					n[je]=i;
+					printf("*%d",i);
+					je++;		
+				}
+				else
+				{
+					;
+				}
+			}
+			a=a/i;
+		}
+		else
+		i++;
+	}
+	
+	
+ } 
